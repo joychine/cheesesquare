@@ -55,8 +55,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar_alone = (Toolbar) findViewById(R.id.toolbar_alone);
         setSupportActionBar(toolbar);
 
+
+//        但是在这种模式下，你不用去设置ToolBar作为ActionBar使用。由于这个原因，你可以使用任何AppCompat主题并且你不需要禁用decor提供的ActionBar。
+        // Inflate a menu to be displayed in the toolbar  当它被独立使用的时候，你需要通过content/actions手动的填充ToolBar、比如，如果你想它展示一些actions,你需要填充一个menu进去。
+        toolbar.inflateMenu(R.menu.drawer_view);
+        // Set an OnMenuItemClickListener to handle menu item clicks
+        toolbar_alone.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return false;
+            }
+        });
+
+        //作为actionbar时候，一个特征。Show menu icon
         final ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
