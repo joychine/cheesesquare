@@ -16,8 +16,10 @@
 
 package com.support.android.designlibdemo;
 
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -32,11 +34,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -46,7 +51,7 @@ import java.util.List;
  * TODO
  */
 public class MainActivity extends AppCompatActivity {
-
+    private String TAG = getClass().getSimpleName();
     private DrawerLayout mDrawerLayout;
 
     @Override
@@ -78,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Log.e(TAG,"topPadding:"+navigationView.getPaddingTop());
         if (navigationView != null) {
             setupDrawerContent(navigationView);
         }
