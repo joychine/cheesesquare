@@ -18,6 +18,9 @@
 <resources>
 
     <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo">
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">true</item>
+
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>  <!--表明系统窗口如果不是floating状态时是否用下面那个颜色绘制背景-->
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>

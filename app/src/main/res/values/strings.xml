@@ -18,6 +18,9 @@
 <resources>
     <string name="app_name">Cheesesquare</string>
 
+    <string name="open_drawer_contentDesc">openDrawerContentDescRes</string>
+    <string name="close_drawer_contentDesc">closeDrawerContentDescRes</string>
+
   <string name="cheese_ipsum">Jarlsberg lancashire edam. Dolcelatte hard cheese brie st. agur blue
     cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss bavarian
     bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese rubber

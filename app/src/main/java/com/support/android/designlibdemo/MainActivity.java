@@ -16,10 +16,10 @@
 
 package com.support.android.designlibdemo;
 
-import android.nfc.Tag;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
+import android.support.annotation.Keep;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -31,18 +31,13 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,23 +45,34 @@ import java.util.List;
 /**
  * TODO
  */
+@Keep
 public class MainActivity extends AppCompatActivity {
     private String TAG = getClass().getSimpleName();
     private DrawerLayout mDrawerLayout;
+    private ViewPager mViewPager;
+    private Toolbar mToolbar;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        Toolbar toolbar_alone = (Toolbar) findViewById(R.id.toolbar_alone);
-        setSupportActionBar(toolbar);
+        initToolBar();
+        initDrawlayout();
+        initViewPager();
+        initTablayout();
+        initFab();
+    }
 
+    private void initToolBar() {
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar_alone = (Toolbar) findViewById(R.id.toolbar_alone);
+        setSupportActionBar(mToolbar);
 
 //        但是在这种模式下，你不用去设置ToolBar作为ActionBar使用。由于这个原因，你可以使用任何AppCompat主题并且你不需要禁用decor提供的ActionBar。
-        // Inflate a menu to be displayed in the toolbar  当它被独立使用的时候，你需要通过content/actions手动的填充ToolBar、比如，如果你想它展示一些actions,你需要填充一个menu进去。
-        toolbar.inflateMenu(R.menu.drawer_view);
+        // Inflate a menu to be displayed in the mToolbar  当它被独立使用的时候，你需要通过content/actions手动的填充ToolBar、比如，如果你想它展示一些actions,你需要填充一个menu进去。
+        mToolbar.inflateMenu(R.menu.drawer_view);
         // Set an OnMenuItemClickListener to handle menu item clicks
         toolbar_alone.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -78,32 +84,87 @@ public class MainActivity extends AppCompatActivity {
         //作为actionbar时候，一个特征。Show menu icon
         final ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+//        ab.setElevation(1f);
+//        ab.setDefaultDisplayHomeAsUpEnabled(true);
+//        ab.setTitle("dddsdsd");
+//        ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayHomeAsUpEnabled(true);
+        ab.setHomeButtonEnabled(true);
+    }
 
+    private void initDrawlayout() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        NavigationView nav_view_left = (NavigationView) findViewById(R.id.nav_view_left);
+        NavigationView nav_view_right = (NavigationView) findViewById(R.id.nav_view_right);
+        mDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,mDrawerLayout,mToolbar,R.string.open_drawer_contentDesc,R.string.close_drawer_contentDesc){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle("drawer_opened_title");
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        Log.e(TAG,"topPadding:"+navigationView.getPaddingTop());
-        if (navigationView != null) {
-            setupDrawerContent(navigationView);
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                getSupportActionBar().setTitle("drawer_closeed_title");
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        setupDrawerContent(nav_view_left, nav_view_right);
+    }
+
+    private void setupDrawerContent(NavigationView... navigationViewArr) {
+        if (navigationViewArr != null && navigationViewArr.length > 0) {
+            for (NavigationView navigationView : navigationViewArr) {
+                navigationView.setNavigationItemSelectedListener(
+                        new NavigationView.OnNavigationItemSelectedListener() {
+                            @Override
+                            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                                menuItem.setChecked(true);
+                                mDrawerLayout.closeDrawers();
+                                return true;
+                            }
+                        });
+            }
         }
+    }
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        if (viewPager != null) {
-            setupViewPager(viewPager);
+    private void initViewPager() {
+        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        if (mViewPager != null) {
+            setupViewPager(mViewPager);
         }
+    }
 
+    private void initTablayout() {
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+    }
+
+    private void initFab() {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Here'ssdsdsdsd a Snackbar", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+    }
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -133,6 +194,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        // Handle your other action bar items...
         switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
@@ -167,18 +234,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new CheeseListFragment(), "Category 2");
         adapter.addFragment(new CheeseListFragment(), "Category 3");
         viewPager.setAdapter(adapter);
-    }
-
-    private void setupDrawerContent(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                menuItem.setChecked(true);
-                mDrawerLayout.closeDrawers();
-                return true;
-            }
-        });
     }
 
     static class Adapter extends FragmentPagerAdapter {

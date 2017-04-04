@@ -63,15 +63,18 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_done"
-        app:fabSize="normal" />
+        app:fabSize="auto"
+        app:layout_behavior="com.support.android.designlibdemo.behaviour.ScrollAwareFABBehavior"/>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_alone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
+        android:layout_gravity="bottom"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="dfdfdfdfdf" />
+        app:layout_scrollFlags="scroll|enterAlways|snap"
+        app:title="my tool bar" />
 
 </android.support.design.widget.CoordinatorLayout>

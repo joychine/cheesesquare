@@ -1,6 +1,6 @@
 {
     "android_gradle_plugin_version": "2.2.3",
-    "apk_path": "C:\\workspace_4_as\\cheesesquare\\app\\build\\outputs\\apk\\app-debug.apk",
+    "apk_path": "D:\\as_workspace\\cheesesquare\\app\\build\\outputs\\apk\\app-debug.apk",
     "apt": {
         
     },
@@ -9,14 +9,17 @@
         "butterknife": false
     },
     "auto_dependency": true,
-    "build_cache_dir": "C:\\workspace_4_as\\cheesesquare\\app\\build\\freeline",
-    "build_directory": "C:\\workspace_4_as\\cheesesquare\\app\\build",
+    "build_cache_dir": "D:\\as_workspace\\cheesesquare\\app\\build\\freeline",
+    "build_directory": "D:\\as_workspace\\cheesesquare\\app\\build",
     "build_script": "gradlew.bat :app:assembleDebug",
     "build_script_work_directory": "",
-    "build_tools_directory": "C:\\android-sdk-windows\\build-tools\\25.0.2",
-    "build_tools_version": "25.0.2",
-    "compile_sdk_directory": "C:\\android-sdk-windows\\platforms\\android-25",
-    "compile_sdk_version": "android-25",
+    "build_tools_directory": "D:\\android-sdk-windows\\build-tools\\24.0.3",
+    "build_tools_version": "24.0.3",
+    "check_sources_md5": [
+        
+    ],
+    "compile_sdk_directory": "D:\\android-sdk-windows\\platforms\\android-24",
+    "compile_sdk_version": "android-24",
     "databinding": [
         
     ],
@@ -31,33 +34,41 @@
     "extra_dep_res_paths": [
         
     ],
-    "freeline_cache_dir": "C:\\workspace_4_as\\cheesesquare",
-    "freeline_gradle_plugin_version": "0.8.4",
-    "java_home": "C:\\JDK8",
+    "freeline_cache_dir": "D:\\as_workspace\\cheesesquare",
+    "freeline_gradle_plugin_version": "0.8.7",
+    "ignore_resource_ids": [
+        "avd_hide_password_1",
+        "avd_hide_password_2",
+        "avd_hide_password_3",
+        "avd_show_password_1",
+        "avd_show_password_2",
+        "avd_show_password_3"
+    ],
+    "java_home": "C:\\Program Files\\Java\\jdk1.8.0_101",
     "launcher": "com.support.android.designlibdemo.MainActivity",
     "main_assets_directory": [
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\assets",
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\assets"
+        "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\assets",
+        "D:\\as_workspace\\cheesesquare\\app\\src\\main\\assets"
     ],
     "main_jniLibs_directory": [
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\jniLibs",
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\jniLibs"
+        "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\jniLibs",
+        "D:\\as_workspace\\cheesesquare\\app\\src\\main\\jniLibs"
     ],
     "main_jni_directory": [
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\jni",
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\jni"
+        "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\jni",
+        "D:\\as_workspace\\cheesesquare\\app\\src\\main\\jni"
     ],
-    "main_manifest_path": "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\AndroidManifest.xml",
+    "main_manifest_path": "D:\\as_workspace\\cheesesquare\\app\\src\\main\\AndroidManifest.xml",
     "main_project_dir": "app",
     "main_project_name": "app",
-    "main_r_path": "C:\\workspace_4_as\\cheesesquare\\app\\build\\generated\\source\\r\\debug\\R.java",
+    "main_r_path": "D:\\as_workspace\\cheesesquare\\app\\build\\generated\\source\\r\\debug\\R.java",
     "main_res_directory": [
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\res",
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\res"
+        "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\res",
+        "D:\\as_workspace\\cheesesquare\\app\\src\\main\\res"
     ],
     "main_src_directory": [
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\java",
-        "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\java"
+        "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\java",
+        "D:\\as_workspace\\cheesesquare\\app\\src\\main\\java"
     ],
     "module_dependencies": {
         "app": [
@@ -67,7 +78,7 @@
     "modules": [
         {
             "name": "app",
-            "path": "C:\\workspace_4_as\\cheesesquare\\app"
+            "path": "D:\\as_workspace\\cheesesquare\\app"
         }
     ],
     "package": "com.support.android.designlibdemo",
@@ -75,25 +86,25 @@
     "project_source_sets": {
         "app": {
             "main_assets_directory": [
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\assets",
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\assets"
+                "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\assets",
+                "D:\\as_workspace\\cheesesquare\\app\\src\\main\\assets"
             ],
             "main_jniLibs_directory": [
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\jniLibs",
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\jniLibs"
+                "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\jniLibs",
+                "D:\\as_workspace\\cheesesquare\\app\\src\\main\\jniLibs"
             ],
             "main_jni_directory": [
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\jni",
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\jni"
+                "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\jni",
+                "D:\\as_workspace\\cheesesquare\\app\\src\\main\\jni"
             ],
-            "main_manifest_path": "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\AndroidManifest.xml",
+            "main_manifest_path": "D:\\as_workspace\\cheesesquare\\app\\src\\main\\AndroidManifest.xml",
             "main_res_directory": [
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\res",
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\res"
+                "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\res",
+                "D:\\as_workspace\\cheesesquare\\app\\src\\main\\res"
             ],
             "main_src_directory": [
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\debug\\java",
-                "C:\\workspace_4_as\\cheesesquare\\app\\src\\main\\java"
+                "D:\\as_workspace\\cheesesquare\\app\\src\\debug\\java",
+                "D:\\as_workspace\\cheesesquare\\app\\src\\main\\java"
             ]
         }
     },
@@ -101,7 +112,8 @@
     "retrolambda": {
         
     },
-    "root_dir": "C:\\workspace_4_as\\cheesesquare",
-    "sdk_directory": "C:\\android-sdk-windows",
-    "use_jdk8": true
+    "root_dir": "D:\\as_workspace\\cheesesquare",
+    "sdk_directory": "D:\\android-sdk-windows",
+    "use_jdk8": true,
+    "use_system_gradle": false
 }
