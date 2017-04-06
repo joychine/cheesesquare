@@ -20,10 +20,8 @@
     <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo">
         <!--To have the status bar translucent and have our drawer slide over it, we need to set android:windowTranslucentStatus to true. Because this style is not available for pre Kitkat devices, we'll add res/values-v19/styles.xml file for API version 19 and onwards. Note: If you modify your res/values/styles.xml directly with this android:windowTranslucentStatus line, you are likely to need to build only for SDK versions 19 or higher, which will obviously limit you from supporting many older devices.-->
         <!-- Customize your theme here.下面这个属性true与false对我的6.0并没什么效果变化呢。 -->
-        <item name="android:windowTranslucentStatus">true</item>
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
 
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>  <!--表明系统窗口如果不是floating状态时是否用下面那个颜色绘制背景-->
-        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
 </resources>

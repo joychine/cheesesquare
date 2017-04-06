@@ -16,3 +16,4 @@ build/
 .gradle/
 .idea
 *.iml
+/freeline_project_description.json

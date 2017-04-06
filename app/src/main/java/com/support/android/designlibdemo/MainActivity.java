@@ -38,6 +38,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            // Translucent status bar
+//            window.setFlags(
+//                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+//                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
         setContentView(R.layout.activity_main);
 
         initToolBar();
@@ -87,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
 //        ab.setElevation(1f);
 //        ab.setDefaultDisplayHomeAsUpEnabled(true);
 //        ab.setTitle("dddsdsd");
-//        ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setHomeButtonEnabled(true);
     }
