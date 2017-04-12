@@ -16,6 +16,7 @@
 
 package com.support.android.designlibdemo;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -109,18 +110,19 @@ public class MainActivity extends AppCompatActivity {
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle("drawer_opened_title");
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 getSupportActionBar().setTitle("drawer_closeed_title");
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         setupDrawerContent(nav_view_left, nav_view_right);
+
     }
 
     private void setupDrawerContent(NavigationView... navigationViewArr) {
@@ -132,6 +134,12 @@ public class MainActivity extends AppCompatActivity {
                             public boolean onNavigationItemSelected(MenuItem menuItem) {
                                 menuItem.setChecked(true);
                                 mDrawerLayout.closeDrawers();
+
+                                if(menuItem.getItemId() == R.id.nav_home){
+                                    startActivity(new Intent(MainActivity.this,PercentLayoutActivity.class));
+                                    return true;
+                                }
+
                                 return true;
                             }
                         });
@@ -224,6 +232,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_night_mode_auto:
                 setNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
                 break;
+
+
         }
         return super.onOptionsItemSelected(item);
     }

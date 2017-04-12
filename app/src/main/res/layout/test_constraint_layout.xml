@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/cheese_1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="52dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:contentDescription="dfdfdf"
+        android:gravity="center"
+        android:text="TextView"
+        tools:text="@string/action_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintRight_toLeftOf="@+id/textView2"
+        android:layout_marginRight="89dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="156dp"
+        android:layout_height="67dp"
+        android:text="TextView"
+        tools:text="第二个。。。。。。。。。。。"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="484dp" />
+
+</android.support.constraint.ConstraintLayout>
