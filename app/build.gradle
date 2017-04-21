@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.antfortune.freeline'
 
 android {
+    signingConfigs {
+
+        config {
+            keyAlias '12345'
+            keyPassword '12345'
+            storePassword '12345'
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
     defaultConfig {
@@ -10,15 +18,29 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        signingConfig signingConfigs.config
+        testApplicationId 'com.teest.id'
+        versionNameSuffix 'mysuffix'
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            pseudoLocalesEnabled true
+        }
     }
+
+
     productFlavors {
         mydebug {
+            minSdkVersion 21
+            applicationId 'com.test.id1122'
+            targetSdkVersion 24
+            versionCode 1
+            versionName '1.111111'
+            versionNameSuffix 'suffic...........'
         }
     }
 
@@ -41,3 +63,52 @@ dependencies {
     compile 'com.android.support:percent:24.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
+
+
+
+
+this.afterEvaluate {
+    getTasks().getByName ("assembleMydebugDebug")  {  //这个 assembleDebug必须在 evaluate后不然这个时候还没有，但是assemble这个task还是啥时候都有的。
+        println("assemble task is run over");
+        it.doLast {
+            println("d大幅度反弹do last=l==")
+        }
+    }
+}
+
+
+task 'taskname' {  //Gradle 的task name 字符串可以不带 "" 或 ' 或不带
+
+}
+
+task notsignTask{
+
+}
+
+clean.dependsOn 'cposCleanTask_1','cposCleanTask_2'  //this 代表当前脚本文件代表的project对象。可以不写this，as好识别。。
+this.clean.dependsOn
+
+//创建一个Task，
+task cposCleanTask_1 <<{  //task的name 可以带 ()或者不带。。。。
+//    cleanOutput(true)  //cleanOutput是utils.gradle中通过extra属性设置的Closure
+    println("最后的任务1：do last....")
+}
+
+//创建一个Task，
+task cposCleanTask_2() <<{
+//    cleanOutput(true)  //cleanOutput是utils.gradle中通过extra属性设置的Closure
+    println("最后的任务2：do last....")
+}
+//创建一个Task，
+Task task_3 = task cposCleanTask_3;
+task_3.doLast {
+    println("最后的任务3：do last....")
+}
+
+
+
+task myTask1 //<==myTask是新建Task的名字
+task myTask2 { }
+task myType3 << {  } // <==注意，<<符号是doLast的缩写
+task myTask4(type: org.gradle.api.tasks.Copy)
+task myTask5(type: org.gradle.api.tasks.Delete) {  }
