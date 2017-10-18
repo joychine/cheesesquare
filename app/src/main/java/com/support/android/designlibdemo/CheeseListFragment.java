@@ -18,13 +18,16 @@ package com.support.android.designlibdemo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -99,7 +102,7 @@ public class CheeseListFragment extends Fragment {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-            view.setBackgroundResource(mBackground);
+//            view.setBackgroundResource(mBackground);
             return new ViewHolder(view);
         }
 
@@ -118,6 +121,31 @@ public class CheeseListFragment extends Fragment {
                     context.startActivity(intent);
                 }
             });
+
+            if(Build.VERSION.SDK_INT >=21){
+                holder.mView.setOnTouchListener(new View.OnTouchListener(){
+
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        switch (event.getAction()){
+                            case MotionEvent.ACTION_DOWN:
+                                v.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,10,v.getContext().getResources().getDisplayMetrics()));
+                                break;
+                            case MotionEvent.ACTION_UP:
+                                v.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,2,v.getContext().getResources().getDisplayMetrics()));
+                                break;
+                            default:
+                                v.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,2,v.getContext().getResources().getDisplayMetrics()));
+                                break;
+                        }
+
+                        return false;
+                    }
+                });
+            }
+
+
 
             Glide.with(holder.mImageView.getContext())
                     .load(Cheeses.getRandomCheeseDrawable())

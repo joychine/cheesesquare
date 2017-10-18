@@ -77,12 +77,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void initToolBar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        Toolbar toolbar_alone = (Toolbar) findViewById(R.id.toolbar_alone);
+        mToolbar.inflateMenu(R.menu.drawer_view);
         setSupportActionBar(mToolbar);
 
-//        但是在这种模式下，你不用去设置ToolBar作为ActionBar使用。由于这个原因，你可以使用任何AppCompat主题并且你不需要禁用decor提供的ActionBar。
+        Toolbar toolbar_alone = (Toolbar) findViewById(R.id.toolbar_alone);
+        //但是在这种模式下，你不用去设置ToolBar作为ActionBar使用。由于这个原因，你可以使用任何AppCompat主题并且你不需要禁用decor提供的ActionBar。
         // Inflate a menu to be displayed in the mToolbar  当它被独立使用的时候，你需要通过content/actions手动的填充ToolBar、比如，如果你想它展示一些actions,你需要填充一个menu进去。
-        mToolbar.inflateMenu(R.menu.drawer_view);
+        toolbar_alone.inflateMenu(R.menu.drawer_view);
         // Set an OnMenuItemClickListener to handle menu item clicks
         toolbar_alone.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -96,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
 //        ab.setElevation(1f);
 //        ab.setDefaultDisplayHomeAsUpEnabled(true);
-//        ab.setTitle("dddsdsd");
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setHomeButtonEnabled(true);
+        ab.setTitle("dddsdsd");
+//        ab.setDisplayHomeAsUpEnabled(true);
+//        ab.setHomeButtonEnabled(true);
     }
 
     private void initDrawlayout() {
